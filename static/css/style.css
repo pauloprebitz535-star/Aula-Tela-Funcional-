@@ -1,0 +1,176 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 40px 20px;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    background-color: #eef1f5;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #1f2937;
+}
+
+.window {
+    width: 100%;
+    max-width: 880px;
+    background-color: #ffffff;
+    border: 1px solid #e2e5eb;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+.window-header {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 18px;
+    background-color: #eef0f4;
+    border-bottom: 1px solid #e2e5eb;
+}
+
+.window-dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+}
+
+.window-dot.red { background-color: #ff5f57; }
+.window-dot.yellow { background-color: #febc2e; }
+.window-dot.green { background-color: #28c840; }
+
+.content {
+    padding: 32px 36px 40px;
+}
+
+h1 {
+    margin: 0 0 28px;
+    font-size: 28px;
+    font-weight: 700;
+    color: #1f2937;
+    text-align: left;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+    row-gap: 18px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+}
+
+input[type="text"],
+input[type="email"] {
+    height: 44px;
+    padding: 0 14px;
+    border: 1px solid #d7dbe3;
+    border-radius: 8px;
+    background-color: #f7f8fa;
+    font-size: 14px;
+    color: #1f2937;
+    font-family: inherit;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+input::placeholder {
+    color: #9aa1ac;
+}
+
+input:focus {
+    outline: none;
+    border-color: #22c55e;
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.15);
+    background-color: #ffffff;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 22px;
+}
+
+#btnCadastrar {
+    width: 110px;
+    height: 50px;
+    border: none;
+    border-radius: 8px;
+    background-color: #22c55e;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 15px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+
+#btnCadastrar:hover {
+    background-color: #1ea34e;
+}
+
+.mensagem {
+    margin-top: 16px;
+    font-size: 14px;
+    min-height: 20px;
+}
+
+.mensagem.sucesso { color: #15803d; }
+.mensagem.erro { color: #dc2626; }
+
+.clientes {
+    margin-top: 32px;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 480px;
+}
+
+thead th {
+    text-align: left;
+    font-size: 13px;
+    color: #6b7280;
+    background-color: #f7f8fa;
+    padding: 12px 14px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+tbody td {
+    padding: 12px 14px;
+    font-size: 14px;
+    color: #1f2937;
+    border-bottom: 1px solid #f0f1f3;
+}
+
+tbody tr:last-child td { border-bottom: none; }
+
+@media (max-width: 640px) {
+    .content {
+        padding: 24px 20px 28px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    #btnCadastrar {
+        width: 100%;
+    }
+}
