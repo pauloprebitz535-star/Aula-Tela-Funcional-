@@ -4,7 +4,12 @@ from mysql.connector import Error
 
 from models.cliente import Cliente
 
-EMAIL_REGEX = re.compile(r'^[^@\s]+@[^@\s]+\.[^@\s]+$')
+# Só aceita e-mails no formato usuario@gmail.com
+EMAIL_REGEX = re.compile(r'^[^@\s]+@gmail\.com$', re.IGNORECASE)
+
+
+def email_valido(email):
+    return bool(EMAIL_REGEX.match(email))
 
 
 def listar_clientes():
@@ -40,11 +45,29 @@ def cadastrar_cliente(dados):
     if not email:
         return {'success': False, 'message': 'Preencha o e-mail.'}, 400
 
-    if not EMAIL_REGEX.match(email):
-        return {'success': False, 'message': 'Informe um e-mail válido.'}, 400
+    if not email_valido(email):
+        return {
+            'success': False,
+            'message': 'E-mail inválido. Utilize um endereço Gmail, por exemplo: exemplo@gmail.com'
+        }, 400
 
     if not telefone:
         return {'success': False, 'message': 'Preencha o telefone.'}, 400
+
+    if not telefone.isdigit():
+        return {'success': False, 'message': 'Telefone deve conter apenas números.'}, 400
+
+    if len(telefone) < 11:
+        return {
+            'success': False,
+            'message': 'Telefone inválido. Digite o DDD + número com 11 dígitos.'
+        }, 400
+
+    if len(telefone) > 11:
+        return {
+            'success': False,
+            'message': 'Telefone inválido. Digite somente 11 números.'
+        }, 400
 
     if not cidade:
         return {'success': False, 'message': 'Preencha a cidade.'}, 400
