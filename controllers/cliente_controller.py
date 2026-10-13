@@ -6,6 +6,7 @@ from models.cliente import Cliente
 
 # Só aceita e-mails no formato usuario@gmail.com
 EMAIL_REGEX = re.compile(r'^[^@\s]+@gmail\.com$', re.IGNORECASE)
+TELEFONE_REGEX = re.compile(r'^[0-9]{11}$')
 
 
 def email_valido(email):

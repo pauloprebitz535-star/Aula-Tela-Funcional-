@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const emailInput = document.getElementById('email');
     const telefoneInput = document.getElementById('telefone');
     const cidadeInput = document.getElementById('cidade');
+    const btnSair = document.getElementById('btnSair');
 
     // Só aceita e-mails no formato usuario@gmail.com
     const GMAIL_REGEX = /^[^\s@]+@gmail\.com$/i;
@@ -86,6 +87,11 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const resposta = await fetch('/api/clientes');
 
+            if (resposta.status === 401) {
+                window.location.href = '/login';
+                return;
+            }
+
             if (!resposta.ok) {
                 throw new Error('Erro ao buscar clientes');
             }
@@ -100,6 +106,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    async function sair() {
+        try {
+            await fetch('/api/logout', { method: 'POST' });
+        } finally {
+            window.location.href = '/login';
+        }
+    }
+
+    btnSair.addEventListener('click', sair);
+
     async function cadastrarCliente(dados) {
         try {
             const resposta = await fetch('/api/clientes', {
@@ -109,6 +125,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 },
                 body: JSON.stringify(dados)
             });
+
+            if (resposta.status === 401) {
+                window.location.href = '/login';
+                return;
+            }
 
             const resultado = await resposta.json();
 

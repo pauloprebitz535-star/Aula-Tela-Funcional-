@@ -7,7 +7,7 @@ body {
     padding: 40px 20px;
     min-height: 100vh;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     background-color: #eef1f5;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -16,7 +16,7 @@ body {
 
 .window {
     width: 100%;
-    max-width: 880px;
+    max-width: 400px;
     background-color: #ffffff;
     border: 1px solid #e2e5eb;
     border-radius: 12px;
@@ -45,30 +45,30 @@ body {
 .window-dot.green { background-color: #28c840; }
 
 .content {
-    padding: 32px 36px 40px;
+    padding: 36px 32px 40px;
+    text-align: center;
 }
 
 h1 {
-    margin: 0 0 28px;
-    font-size: 28px;
+    margin: 0 0 4px;
+    font-size: 26px;
     font-weight: 700;
     color: #1f2937;
-    text-align: left;
 }
 
-.form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 20px;
-    row-gap: 18px;
+.subtitulo {
+    margin: 0 0 28px;
+    font-size: 14px;
+    color: #6b7280;
 }
 
 .form-group {
-    display: flex;
-    flex-direction: column;
+    margin-bottom: 18px;
+    text-align: left;
 }
 
 label {
+    display: block;
     margin-bottom: 6px;
     font-size: 14px;
     font-weight: 600;
@@ -76,7 +76,9 @@ label {
 }
 
 input[type="text"],
-input[type="email"] {
+input[type="email"],
+input[type="password"] {
+    width: 100%;
     height: 44px;
     padding: 0 14px;
     border: 1px solid #d7dbe3;
@@ -99,15 +101,44 @@ input:focus {
     background-color: #ffffff;
 }
 
-.form-actions {
+.campo-senha {
+    position: relative;
     display: flex;
-    justify-content: flex-end;
-    margin-top: 22px;
+    align-items: center;
 }
 
-#btnCadastrar {
-    width: 110px;
+.campo-senha input {
+    padding-right: 44px;
+}
+
+#btnVerSenha {
+    position: absolute;
+    right: 6px;
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#btnVerSenha:hover {
+    background-color: #eef1f5;
+}
+
+#btnVerSenha:focus-visible {
+    outline: 2px solid #22c55e;
+    outline-offset: 2px;
+}
+
+#btnEntrar {
+    width: 100%;
     height: 50px;
+    margin-top: 6px;
     border: none;
     border-radius: 8px;
     background-color: #22c55e;
@@ -116,11 +147,20 @@ input:focus {
     font-size: 15px;
     font-family: inherit;
     cursor: pointer;
-    transition: background-color 0.15s ease;
+    transition: background-color 0.15s ease, transform 0.05s ease;
 }
 
-#btnCadastrar:hover {
+#btnEntrar:hover {
     background-color: #1ea34e;
+}
+
+#btnEntrar:active {
+    transform: scale(0.99);
+}
+
+#btnEntrar:disabled {
+    background-color: #9bd6ae;
+    cursor: not-allowed;
 }
 
 .mensagem {
@@ -132,45 +172,8 @@ input:focus {
 .mensagem.sucesso { color: #15803d; }
 .mensagem.erro { color: #dc2626; }
 
-.clientes {
-    margin-top: 32px;
-    overflow-x: auto;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    min-width: 480px;
-}
-
-thead th {
-    text-align: left;
-    font-size: 13px;
-    color: #6b7280;
-    background-color: #f7f8fa;
-    padding: 12px 14px;
-    border-bottom: 1px solid #e5e7eb;
-}
-
-tbody td {
-    padding: 12px 14px;
-    font-size: 14px;
-    color: #1f2937;
-    border-bottom: 1px solid #f0f1f3;
-}
-
-tbody tr:last-child td { border-bottom: none; }
-
-@media (max-width: 640px) {
+@media (max-width: 480px) {
     .content {
-        padding: 24px 20px 28px;
-    }
-
-    .form-grid {
-        grid-template-columns: 1fr;
-    }
-
-    #btnCadastrar {
-        width: 100%;
+        padding: 28px 22px 32px;
     }
 }

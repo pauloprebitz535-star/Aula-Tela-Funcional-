@@ -5,13 +5,14 @@ import mysql.connector
 
 load_dotenv()
 
-DB_HOST = os.getenv('DB_HOST', '127.0.0.1')
-DB_USER = os.getenv('DB_USER', 'aluno06')
-DB_PASSWORD = os.getenv('DB_PASSWORD', 'C@nes2026')
-DB_NAME = os.getenv('DB_NAME', 'aluno06')
+DB_HOST = os.getenv('DB_HOST', 'localhost')
+DB_USER = os.getenv('DB_USER', 'root')
+DB_PASSWORD = os.getenv('DB_PASSWORD', '')
+DB_NAME = os.getenv('DB_NAME', 'cadastro_clientes')
 
 
-def get_db_connection():    
+def get_db_connection():
+    """Abre e retorna uma nova conexão com o banco MySQL."""
     return mysql.connector.connect(
         host=DB_HOST,
         user=DB_USER,
